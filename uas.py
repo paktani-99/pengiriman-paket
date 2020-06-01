@@ -4,11 +4,12 @@ hitung = 0
 paket_1= 500
 paket_2= 400
 paket_3= 300
-
+biaya = 0
 
 
 while iterasi == True:
     hitung += 1
+    biaya += 1
     nama=input('Nama pengirim: ')
     nama_1=input('Nama penerima: ')
     alamat=input('Alamat penerima: ')
@@ -51,4 +52,4 @@ while iterasi == True:
         iterasi == False
         break
 print ("Total transaksi hari ini: " + str(hitung),'\n')
-    
+print ("Total transaksi hari ini: " + str(biaya),'\n') 
