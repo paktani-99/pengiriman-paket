@@ -59,7 +59,7 @@ while iterasi == True:
         print('B. Elektronik Sedang: 3-4 kg')
         total_biaya = biaya+45000
         print('\n', 'Jumlah biaya yang harus dibayar: Rp. ', total_biaya)
-    elif jb == 'B':
+    elif jb == 'C':
         print('C. Elektronik Berat: >=5 kg')
         total_biaya = biaya+60000
         print('\n', 'Jumlah biaya yang harus dibayar: Rp. ', total_biaya)
