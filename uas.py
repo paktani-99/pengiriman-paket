@@ -21,29 +21,59 @@ while iterasi == True:
     print('3. Yakin besok^3 sampe: 3 hari pengiriman')
     jp= input('pilih jenis paket:')
     if jp=='1':
-        print('\n')
-        print('Nama pengirim:',nama)
-        print('Nama penerima:',nama_1)
-        print('Alamat penerima:',alamat)
-        print('biaya ongkir dasar= Rp ',paket_1,'per km' )
-        biaya= paket_1*jarak
-        print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
+        kemas= input('Paket mudah pecah/ makanan?(y/n):')
+        if kemas== 'y':
+            print('\n')
+            print('Nama pengirim:',nama)
+            print('Nama penerima:',nama_1)
+            print('Alamat penerima:',alamat)
+            print('biaya ongkir dasar= Rp ',paket_1,'per km + biaya kemas Rp 5000')
+            biaya= paket_1*jarak+5000
+            print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
+        else:
+            print('\n')
+            print('Nama pengirim:',nama)
+            print('Nama penerima:',nama_1)
+            print('Alamat penerima:',alamat)
+            print('biaya ongkir dasar= Rp ',paket_1,'per km')
+            biaya= paket_1*jarak
+            print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
     elif jp == '2':
-        print('\n')
-        print('Nama pengirim:',nama)
-        print('Nama penerima:',nama_1)
-        print('Alamat penerima:',alamat)
-        print('biaya ongkir dasar= Rp ',paket_2,'per km' )
-        biaya= paket_2*jarak
-        print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
+        kemas= input('Paket mudah pecah/ makanan?(y/n):')
+        if kemas== 'y':
+            print('\n')
+            print('Nama pengirim:',nama)
+            print('Nama penerima:',nama_1)
+            print('Alamat penerima:',alamat)
+            print('biaya ongkir dasar= Rp ',paket_2,'per km + biaya kemas Rp 5000')
+            biaya= paket_2*jarak+5000
+            print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
+        else:
+            print('\n')
+            print('Nama pengirim:',nama)
+            print('Nama penerima:',nama_1)
+            print('Alamat penerima:',alamat)
+            print('biaya ongkir dasar= Rp ',paket_2,'per km')
+            biaya= paket_2*jarak
+            print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
     elif jp == '3':
-        print('\n')
-        print('Nama pengirim:',nama)
-        print('Nama penerima:',nama_1)
-        print('Alamat penerima:',alamat)
-        print('biaya ongkir dasar= Rp ',paket_3,'per km' )
-        biaya = paket_3*jarak
-        print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
+        kemas= input('Paket mudah pecah/ makanan?(y/n):')
+        if kemas== 'y':
+            print('\n')
+            print('Nama pengirim:',nama)
+            print('Nama penerima:',nama_1)
+            print('Alamat penerima:',alamat)
+            print('biaya ongkir dasar= Rp ',paket_3,'per km + biaya kemas Rp 5000')
+            biaya = paket_3*jarak+5000
+            print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
+        else:
+            print('\n')
+            print('Nama pengirim:',nama)
+            print('Nama penerima:',nama_1)
+            print('Alamat penerima:',alamat)
+            print('biaya ongkir dasar= Rp ',paket_3,'per km')
+            biaya = paket_3*jarak
+            print ('\n','Jumlah ongkos kirim: Rp',(biaya*1)+biaya*((berat_paket-1)*0.7))
     #print ('\n','Jumlah ongkos kirim: Rp',(biaya*1))
     #print ("Total transaksi hari ini: " + str(hitung),'\n')
     o_t= input('Ada traksaksi lain?(y/n) ')
