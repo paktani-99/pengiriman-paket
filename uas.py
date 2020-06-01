@@ -49,6 +49,7 @@ while iterasi == True:
     print('A. Elektronik Ringan: 1-2 kg')
     print('B. Elektronik Sedang: 3-4 kg')
     print('C. Elektronik Berat: >=5 kg')
+    print('D. Non Elektronik')
     jb = input ('pilih jenis barang: ')
     if jb == 'A':
         print('A. Elektronik Ringan: 1-2 kg')
@@ -61,6 +62,10 @@ while iterasi == True:
     elif jb == 'B':
         print('C. Elektronik Berat: >=5 kg')
         total_biaya = biaya+60000
+        print('\n', 'Jumlah biaya yang harus dibayar: Rp. ', total_biaya)
+    elif jb == 'D':
+        print('D. Non Elektronik')
+        total_biaya = biaya
         print('\n', 'Jumlah biaya yang harus dibayar: Rp. ', total_biaya)
     #print ('\n','Jumlah biaya yang harus dibayar: Rp',total_biaya)
     #print ("Total transaksi hari ini: " + str(hitung),'\n')
