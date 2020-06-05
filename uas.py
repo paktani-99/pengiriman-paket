@@ -12,14 +12,14 @@ while iterasi:
     nama_pengirim=input('Nama pengirim: ')
     nama_penerima=input('Nama penerima: ')
     alamat=input('Alamat penerima: ')
-    berat_paket= int(input('Berapa berat paket(dlm kg): '))
-    panjang_paket= int(input('Berapa panjang paket(dlm cm): '))
-    lebar_paket= int(input('Berapa lebar paket(dlm cm): '))
-    tinggi_paket= int(input('Berapa tinggi paket(dlm cm): '))
-    jarak= int(input('Berapa jarak pengiriman (dlm km): '))
+    berat_paket= float(input('Berapa berat paket(dlm kg): '))
+    panjang_paket= float(input('Berapa panjang paket(dlm cm): '))
+    lebar_paket= float(input('Berapa lebar paket(dlm cm): '))
+    tinggi_paket= float(input('Berapa tinggi paket(dlm cm): '))
+    jarak= float(input('Berapa jarak pengiriman (dlm km): '))
     #durasi_kirim=int(input('Berapa lama paket sampai(dlm hari): '))
     
-    berat_konversi= int(((panjang_paket/100)*(lebar_paket/100)*(tinggi_paket/100))/(6000))
+    berat_konversi= float(((panjang_paket/100)*(lebar_paket/100)*(tinggi_paket/100))/(6000))
     if berat_paket >= berat_konversi:
         berat= berat_paket
     elif berat_paket < berat_konversi:
