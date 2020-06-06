@@ -1,4 +1,5 @@
 print('\n','===Selamat datang di jasa pengiriman paket ANUGRAH===','\n')
+print('...............................................................')
 iterasi = True
 hitung = 0
 paket_jne = [1500, 1000, 500]
@@ -10,14 +11,22 @@ print('Masukkan Data Pengiriman Anda')
 
 while iterasi:
     hitung += 1
+    print()
+    print('===========================================================')
+    print('BIODATA')
+    print('===========================================================')
     nama_pengirim=input('Nama pengirim: ')
     nama_penerima=input('Nama penerima: ')
     alamat=input('Alamat penerima: ')
+    jarak= float(input('Berapa jarak pengiriman (dlm km): '))
+    print()
+    print('===========================================================')
+    print('DETAIL BARANG')
+    print('===========================================================')
     berat_paket= float(input('Berapa berat paket(dlm kg): '))
     panjang_paket= float(input('Berapa panjang paket(dlm cm): '))
     lebar_paket= float(input('Berapa lebar paket(dlm cm): '))
     tinggi_paket= float(input('Berapa tinggi paket(dlm cm): '))
-    jarak= float(input('Berapa jarak pengiriman (dlm km): '))
     #durasi_kirim=int(input('Berapa lama paket sampai(dlm hari): '))
     
     berat_konversi= float(((panjang_paket/100)*(lebar_paket/100)*(tinggi_paket/100))/(6000))
@@ -25,7 +34,12 @@ while iterasi:
         berat= berat_paket
     elif berat_paket < berat_konversi:
         berat= berat_konversi
-        
+    
+    print()
+    print('===========================================================')
+    print('DETAIL PENGIRIMAN')
+    print('===========================================================')
+    print()
     print('Pilihan Jenis Agent Pengiriman:')
     print('A. Agent : JNE')
     print('B. Agent : TIKI')
@@ -46,7 +60,11 @@ while iterasi:
         elif jp == '3':
             biaya = dict_paket[ja][2] * jarak
             break
-        
+            
+    print()
+    print('===========================================================')
+    print('ASURANSI')
+    print('===========================================================')   
     kemas= input('Paket mudah pecah/makanan? (Y/N): ').upper()
     if kemas== 'Y':
         biaya_1 = biaya+500
@@ -72,12 +90,15 @@ while iterasi:
         total_ongkir = jumlah_ongkir
 
     print()
-    print ('Data pemesanan:')
+    print('===========================================================')
+    print ('BERIKUT DATA PEMESANAN ANDA')
+    print('===========================================================')
+    print()
     print ('Nama pengirim:', nama_pengirim)
     print ('Nama penerima:', nama_penerima)
     print ('Alamat penerima:', alamat)
     print ('Jumlah ongkos kirim: Rp',total_ongkir)
-    print()
+    print('...........................................................')
     print ("Total transaksi hari ini: " + str(hitung),'\n')
     o_t= input('Ada traksaksi lain?(Y/N) ').upper()
     if o_t == 'Y':
@@ -88,7 +109,12 @@ while iterasi:
         total_biaya += total_ongkir
         iterasi = False
 
+print()
+print('...........................................................')
+print()
 print ('Jumlah transaksi hari ini: ' + str(hitung),'\n')
 print ("Total transaksi hari ini: " + str(total_biaya),'\n')
-print ('Terima kasih sudah menggunakan jasa pengiriman kami')
-print ('==Jasa Pengiriman Paket ANUGRAH==')
+print ('==========================================================')
+print ('   Terima kasih sudah menggunakan jasa pengiriman kami    ')
+print ('            Jasa Pengiriman Paket ANUGRAH                 ')
+print ('==========================================================')
