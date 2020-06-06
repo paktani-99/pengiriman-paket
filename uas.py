@@ -17,6 +17,12 @@ dict_paket = {'A':paket_jne, 'B':paket_tiki, 'C': paket_sc}
 total_biaya = 0
 dict_ket1 = {'Y':iya, 'N':tidak}
 dict_ket2 = {'1':a, '2':b, '3':c, '4':d}
+from datetime import datetime
+current = datetime.now()
+
+tahun = current.year
+bulan = current.month
+hari = current.day
 print('Masukkan Data Pengiriman Anda')
 
 while iterasi:
@@ -27,7 +33,16 @@ while iterasi:
     print('===========================================================')
     nama_pengirim=input('Nama pengirim: ')
     nama_penerima=input('Nama penerima: ')
-    alamat=input('Alamat penerima: ')
+    print()
+    print('DETAIL ALAMAT PENERIMA')
+    print('----------------------')
+    rt_rw=input('RT/RW: ')
+    desa_jln=input('Desa/Jalan: ')
+    kecamatan=input('Kecamatan: ')
+    kabupaten=input('Kabupaten: ')
+    provinsi=input('Provinsi: ')
+    kode_pos=input('Kode Pos: ')
+    print()
     no_penerima=input('No Telp penerima: ')
     jarak= float(input('Berapa jarak pengiriman (dlm km): '))
     jenis= input('Paket Surat (Y)/ Non Surat (N): ')
@@ -59,6 +74,7 @@ while iterasi:
             elif jp == '3':
                 total_ongkir = dict_paket[ja][2] * jarak
                 break
+        no_resi=input('No Resi: ')
         print()
         print('===========================================================')
         print ('BERIKUT DATA PEMESANAN ANDA')
@@ -66,9 +82,10 @@ while iterasi:
         print()
         print ('Nama pengirim:', nama_pengirim)
         print ('Nama penerima:', nama_penerima)
-        print ('Alamat penerima:', alamat)
+        print ('Alamat penerima:', desa_jln, kecamatan, kabupaten, provinsi, 'RT/RW:', rt_rw, 'Kode Pos: ', kode_pos)
         print('No Telp penerima:', no_penerima)
-        print('Tanggal kirim:', tgl_kirim)
+        print('Waktu Pengiriman: ',hari, bulan, tahun)
+        print('No Resi: ',no_resi)
         print ('Jumlah ongkos kirim: Rp',total_ongkir)
         print('...........................................................')
         print ("Total transaksi hari ini: " + str(hitung),'\n')
@@ -159,7 +176,7 @@ while iterasi:
         elif jb== '4':
             total_ongkir = jumlah_ongkir
             ket2 = dict_ket2[jb]
-
+        no_resi=input('No Resi: ')
         print()
         print('===========================================================')
         print ('BERIKUT DATA PEMESANAN ANDA')
@@ -167,9 +184,10 @@ while iterasi:
         print()
         print ('Nama pengirim:', nama_pengirim)
         print ('Nama penerima:', nama_penerima)
-        print ('Alamat penerima:', alamat)
+        print ('Alamat penerima:', desa_jln, kecamatan, kabupaten, provinsi, 'RT/RW:', rt_rw, 'Kode Pos: ', kode_pos)
         print('No Telp penerima:', no_penerima)
-        print('Tanggal kirim:', tgl_kirim)
+        print('Waktu Pengiriman: ',hari, bulan, tahun)
+        print('No Resi: ', no_resi)
         print ('Jumlah ongkos kirim: Rp',total_ongkir)
         print()
         print ('*Keterangan: ', ket2, ket1)
