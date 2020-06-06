@@ -1,3 +1,11 @@
+a= 'Paket ini diasuransikan'
+b= 'Paket ini diasuransikan'
+c= 'Paket ini diasuransikan'
+d= 'Paket ini tidak diasuransikan'
+iya= 'dan diberi kemasan pelindung'
+tidak= 'dan tidak diberi lapisan pelindung'
+
+
 print('\n','===Selamat Datang di Jasa Pengiriman Paket ANUGRAH===','\n')
 print('...........................................................')
 iterasi = True
@@ -7,6 +15,8 @@ paket_tiki = [500,400,300]
 paket_sc = [2000,1000,500]
 dict_paket = {'A':paket_jne, 'B':paket_tiki, 'C': paket_sc}
 total_biaya = 0
+dict_ket1 = {'Y':iya, 'N':tidak}
+dict_ket2 = {'1':a, '2':b, '3':c, '4':d}
 print('Masukkan Data Pengiriman Anda')
 
 while iterasi:
@@ -24,7 +34,6 @@ while iterasi:
     print('===========================================================')
     print('DETAIL BARANG')
     print('===========================================================')
-    tgl_kirim=input('Tanggal kirim(dd-mm-yyyy) : ')
     berat_paket= float(input('Berapa berat paket(dlm kg): '))
     panjang_paket= float(input('Berapa panjang paket(dlm cm): '))
     lebar_paket= float(input('Berapa lebar paket(dlm cm): '))
@@ -41,7 +50,7 @@ while iterasi:
     print('===========================================================')
     print('DETAIL PENGIRIMAN')
     print('===========================================================')
-    print()
+    tgl_kirim=input('Tanggal kirim(dd-mm-yyyy) : ')
     print('Pilihan Jenis Agent Pengiriman:')
     print('A. Agent : JNE')
     print('B. Agent : TIKI')
@@ -71,9 +80,11 @@ while iterasi:
     if kemas== 'Y':
         biaya_1 = biaya+500
         jumlah_ongkir = ((biaya_1*1)+biaya_1*((berat-1)*0.7))
+        ket1 = dict_ket1[kemas]
     elif kemas =='N':
         biaya_1 =biaya
         jumlah_ongkir = round(((biaya_1*1)+biaya_1*((berat-1)*0.7)),1)
+        ket1 = dict_ket1[kemas]
     
     print('\n')   
     print('Pilih jenis barang:')
@@ -84,12 +95,16 @@ while iterasi:
     jb= input('Pilih jenis barang (1/2/3/4): ')
     if jb== '1':
         total_ongkir = jumlah_ongkir+30000
+        ket2 = dict_ket2[jb]
     elif jb== '2':
         total_ongkir = jumlah_ongkir+45000
+        ket2 = dict_ket2[jb]
     elif jb== '3':
         total_ongkir = jumlah_ongkir+60000
+        ket2 = dict_ket2[jb]
     elif jb== '4':
         total_ongkir = jumlah_ongkir
+        ket2 = dict_ket2[jb]
 
     print()
     print('===========================================================')
@@ -100,8 +115,9 @@ while iterasi:
     print ('Nama penerima:', nama_penerima)
     print ('Alamat penerima:', alamat)
     print('No Telp penerima:', no_penerima)
-    print('Tanggal kirim(dd-mm-yyyy:', tgl_kirim)
+    print('Tanggal kirim:', tgl_kirim)
     print ('Jumlah ongkos kirim: Rp',total_ongkir)
+    print ('Keterangan: ', ket2, ket1)
     print('...........................................................')
     print ("Total transaksi hari ini: " + str(hitung),'\n')
     o_t= input('Ada traksaksi lain?(Y/N) ').upper()
