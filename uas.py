@@ -1,5 +1,5 @@
-print('\n','===Selamat datang di jasa pengiriman paket ANUGRAH===','\n')
-print('...............................................................')
+print('\n','===Selamat Datang di Jasa Pengiriman Paket ANUGRAH===','\n')
+print('...........................................................')
 iterasi = True
 hitung = 0
 paket_jne = [1500, 1000, 500]
