@@ -6,6 +6,7 @@ paket_tiki = [500,400,300]
 paket_sc = [2000,1000,500]
 dict_paket = {'A':paket_jne, 'B':paket_tiki, 'C': paket_sc}
 total_biaya = 0
+print('Masukkan Data Pengiriman Anda')
 
 while iterasi:
     hitung += 1
