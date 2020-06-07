@@ -108,7 +108,7 @@ while iterasi:
         tinggi_paket= float(input('Berapa tinggi paket(dlm cm): '))
         #durasi_kirim=int(input('Berapa lama paket sampai(dlm hari): '))
     
-        berat_konversi= float(((panjang_paket/100)*(lebar_paket/100)*(tinggi_paket/100))/(6000))
+        berat_konversi= float(((panjang_paket)*(lebar_paket)*(tinggi_paket))/(6000))
         if berat_paket >= berat_konversi:
             berat= berat_paket
         elif berat_paket < berat_konversi:
@@ -174,6 +174,18 @@ while iterasi:
         elif jb== '4':
             total_ongkir = jumlah_ongkir
             ket2 = dict_ket2[jb]
+        
+        if berat >= 200:
+            total_ongkir_1 = total_ongkir+(total_ongkir)
+        elif berat >= 150:
+            total_ongkir_1 = total_ongkir+(total_ongkir*0.5)
+        elif berat >= 100:
+            total_ongkir_1 = total_ongkir+(total_ongkir*0.35)
+        elif berat >= 75:
+            total_ongkir_1 = total_ongkir+(total_ongkir*0.25)
+        else:
+            total_ongkir_1 = total_ongkir
+        
         no_resi=input('No Resi: ')
         print()
         print('===========================================================')
@@ -186,18 +198,18 @@ while iterasi:
         print('No Telp penerima:', no_penerima)
         print('Waktu Pengiriman: ',hari, bulan, tahun)
         print('No Resi: ', no_resi)
-        print ('Jumlah ongkos kirim: Rp',total_ongkir)
+        print ('Jumlah ongkos kirim: Rp',total_ongkir_1)
         print()
         print ('*Keterangan: ', ket2, ket1)
         print('...........................................................')
         print ("Total transaksi hari ini: " + str(hitung),'\n')
         o_t= input('Ada traksaksi lain?(Y/N) ').upper()
         if o_t == 'Y':
-            total_biaya += total_ongkir
+            total_biaya += total_ongkir_1
             print()
             pass
         elif o_t == 'N':
-            total_biaya += total_ongkir
+            total_biaya += total_ongkir_1
             iterasi = False
 
 print()
