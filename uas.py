@@ -1,3 +1,5 @@
+import sys
+import random
 a= 'Paket ini diasuransikan'
 b= 'Paket ini diasuransikan'
 c= 'Paket ini diasuransikan'
@@ -31,8 +33,24 @@ while iterasi:
     print('===========================================================')
     print('BIODATA')
     print('===========================================================')
-    nama_pengirim=input('Nama pengirim: ')
-    nama_penerima=input('Nama penerima: ')
+
+
+    try:
+        nama_pengirim=str(input('Nama pengirim: '))
+        if nama_pengirim == '':
+            raise ValueError
+        
+    except Exception:
+        print("\nError: Input harus berupa string ")
+        nama_pengirim=str(input('Nama pengirim: '))
+    try:
+        nama_penerima=str(input('Nama penerima: '))
+        if nama_penerima == '':
+            raise ValueError  
+    except Exception:
+        print("\nError: Input harus berupa string ")
+        nama_penerima=str(input('Nama penerima: '))
+
     print()
     print('DETAIL ALAMAT PENERIMA')
     print('----------------------')
@@ -44,7 +62,13 @@ while iterasi:
     kode_pos=input('Kode Pos: ')
     print()
     no_penerima=input('No Telp penerima: ')
-    jarak= float(input('Berapa jarak pengiriman (dlm km): '))
+    try:
+        jarak= float(input('Berapa jarak pengiriman (dlm km): '))
+        if jarak <0:
+            raise ValueError
+    except:
+        print("\nError: Input harus berupa angka ")
+        jarak= float(input('Berapa jarak pengiriman (dlm km): '))
     jenis= input('Paket Surat (Y)/ Non Surat (N): ')
     if jenis== 'Y':
         print()
@@ -73,7 +97,7 @@ while iterasi:
             elif jp == '3':
                 total_ongkir = dict_paket[ja][2] * jarak
                 break
-        no_resi=input('No Resi: ')
+        no_resi=random.randint(1000, 2000)
         print()
         print('===========================================================')
         print ('BERIKUT DATA PEMESANAN ANDA')
@@ -161,7 +185,13 @@ while iterasi:
         print('2. Elektronik Sedang: 3-4 kg')
         print('3. Elektronik Berat: >=5 kg')
         print('4. Non Elektronik')
-        jb= input('Pilih jenis barang (1/2/3/4): ')
+        try:
+            jb= input('Pilih jenis barang (1/2/3/4): ')
+            if jb<0:
+                raise ValueError
+        except:
+            print("\nError: Input harus berupa angka ")
+            jb= input('Pilih jenis barang (1/2/3/4): ')      
         if jb== '1':
             total_ongkir = jumlah_ongkir+30000
             ket2 = dict_ket2[jb]
@@ -186,7 +216,8 @@ while iterasi:
         else:
             total_ongkir_1 = total_ongkir
         
-        no_resi=input('No Resi: ')
+        no_resi=random.randint(1000, 2000)
+        
         print()
         print('===========================================================')
         print ('BERIKUT DATA PEMESANAN ANDA')
