@@ -54,14 +54,58 @@ while iterasi:
     print()
     print('DETAIL ALAMAT PENERIMA')
     print('----------------------')
-    rt_rw=input('RT/RW: ')
-    desa_jln=input('Desa/Jalan: ')
-    kecamatan=input('Kecamatan: ')
-    kabupaten=input('Kabupaten: ')
-    provinsi=input('Provinsi: ')
-    kode_pos=input('Kode Pos: ')
-    print()
-    no_penerima=input('No Telp penerima: ')
+    try:
+        rt_rw=input('RT/RW: ')
+        if rt_rw =='':
+            raise ValueError
+        
+    except Exception:
+        print("\nError: Harus diisi ")
+        rt_rw=input('RT/RW: ')
+    try:
+        desa_jln=input('Desa/Jalan: ')
+        if desa_jln=='':
+            raise ValueError
+    except Exception:
+        print("\nError: Harus diisi ")
+        desa_jln=input('Desa/Jalan: ')
+
+    try:
+        kecamatan=input('Kecamatan: ')
+        if kecamatan=='':
+            raise ValueError
+    except Exception:
+        print("\nError: Harus diisi ")
+        kecamatan=input('Kecamatan: ')
+    try:
+        kabupaten=input('Kabupaten: ')
+        if kabupaten == '':
+            raise ValueError
+    except Exception:
+        print("\nError: Harus diisi ")
+        kabupaten=input('Kabupaten: ')
+    try:
+        provinsi=input('Provinsi: ')
+        if provinsi == '':
+            raise ValueError
+    except Exception:
+        print("\nError: Harus diisi ")
+        provinsi=input('Provinsi: ')
+    try:
+        kode_pos=input('Kode Pos: ')
+        if kode_pos == '':
+            raise ValueError
+    except Exception:
+        print("\nError: Harus diisi ")
+        kode_pos=input('Kode Pos: ')
+    try:
+        no_penerima=input('No Telp penerima: ')
+        if no_penerima=='':
+            raise ValueError
+    except Exception:
+        print("\nError: Harus diisi ")
+        no_penerima=input('No Telp penerima: ')
+    
     try:
         jarak= float(input('Berapa jarak pengiriman (dlm km): '))
         if jarak <0:
@@ -69,8 +113,10 @@ while iterasi:
     except:
         print("\nError: Input harus berupa angka ")
         jarak= float(input('Berapa jarak pengiriman (dlm km): '))
+
+        
     jenis= input('Paket Surat (Y)/ Non Surat (N): ')
-    if jenis== 'Y':
+    if jenis== 'Y' or 'y':
         print()
         print('===========================================================')
         print('DETAIL PENGIRIMAN')
@@ -107,21 +153,21 @@ while iterasi:
         print ('Nama penerima:', nama_penerima)
         print ('Alamat penerima:', desa_jln, kecamatan, kabupaten, provinsi, 'RT/RW:', rt_rw, 'Kode Pos: ', kode_pos)
         print('No Telp penerima:', no_penerima)
-        print('Waktu Pengiriman: ',hari, bulan, tahun)
+        print('Waktu Pengiriman: ',':',hari,':',bulan,':',tahun)
         print('No Resi: ',no_resi)
         print ('Jumlah ongkos kirim: Rp',total_ongkir)
         print('...........................................................')
         print ("Total transaksi hari ini: " + str(hitung),'\n')
         o_t= input('Ada traksaksi lain?(Y/N) ').upper()
-        if o_t == 'Y':
+        if o_t == 'Y'or 'y':
             total_biaya += total_ongkir
             print()
             pass
-        elif o_t == 'N':
+        elif o_t == 'N'or 'n':
             total_biaya += total_ongkir
             iterasi = False
             
-    if jenis== 'N':
+    if jenis== 'N'or'n':
         print()
         print('===========================================================')
         print('DETAIL BARANG')
@@ -185,13 +231,8 @@ while iterasi:
         print('2. Elektronik Sedang: 3-4 kg')
         print('3. Elektronik Berat: >=5 kg')
         print('4. Non Elektronik')
-        try:
-            jb= input('Pilih jenis barang (1/2/3/4): ')
-            if jb<0:
-                raise ValueError
-        except:
-            print("\nError: Input harus berupa angka ")
-            jb= input('Pilih jenis barang (1/2/3/4): ')      
+        
+        jb= input('Pilih jenis barang (1/2/3/4): ')      
         if jb== '1':
             total_ongkir = jumlah_ongkir+30000
             ket2 = dict_ket2[jb]
@@ -227,7 +268,7 @@ while iterasi:
         print ('Nama penerima:', nama_penerima)
         print ('Alamat penerima:', desa_jln, kecamatan, kabupaten, provinsi, 'RT/RW:', rt_rw, 'Kode Pos: ', kode_pos)
         print('No Telp penerima:', no_penerima)
-        print('Waktu Pengiriman: ',hari, bulan, tahun)
+        print('Waktu Pengiriman: ',hari,':',bulan,':',tahun)
         print('No Resi: ', no_resi)
         print ('Jumlah ongkos kirim: Rp',total_ongkir_1)
         print()
@@ -235,11 +276,11 @@ while iterasi:
         print('...........................................................')
         print ("Total transaksi hari ini: " + str(hitung),'\n')
         o_t= input('Ada traksaksi lain?(Y/N) ').upper()
-        if o_t == 'Y':
+        if o_t == 'Y'or'y':
             total_biaya += total_ongkir_1
             print()
             pass
-        elif o_t == 'N':
+        elif o_t == 'N'or'n':
             total_biaya += total_ongkir_1
             iterasi = False
 
