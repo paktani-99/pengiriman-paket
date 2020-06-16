@@ -102,7 +102,7 @@ while iterasi:
             raise ValueError
     except Exception:
         print("\nError: Harus diisi ")
-        print("Contoh penulisan yang tepat: Semarang ")
+        print("Contoh penulisan yang tepat dengan huruf kecil: semarang ")
         kabupaten=input('Kabupaten: ')
     try:
         provinsi=input('Provinsi: ')
