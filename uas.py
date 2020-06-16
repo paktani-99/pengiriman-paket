@@ -124,8 +124,8 @@ while iterasi:
                 jarak= int(row[2])
 
         
-    jenis= input('Paket Surat (Y)/ Non Surat (N): ')
-    if jenis== 'Y' or 'y':
+    jenis= input('Paket Surat (Y)/ Non Surat (N): ').upper()
+    if jenis== 'Y':
         print()
         print('===========================================================')
         print('DETAIL PENGIRIMAN')
@@ -168,15 +168,15 @@ while iterasi:
         print('...........................................................')
         print ("Total transaksi hari ini: " + str(hitung),'\n')
         o_t= input('Ada traksaksi lain?(Y/N) ').upper()
-        if o_t == 'Y'or 'y':
+        if o_t == 'Y':
             total_biaya += total_ongkir
             print()
             pass
-        elif o_t == 'N'or 'n':
+        elif o_t == 'N':
             total_biaya += total_ongkir
             iterasi = False
             
-    if jenis== 'N'or'n':
+    if jenis== 'N':
         print()
         print('===========================================================')
         print('DETAIL BARANG')
@@ -285,11 +285,11 @@ while iterasi:
         print('...........................................................')
         print ("Total transaksi hari ini: " + str(hitung),'\n')
         o_t= input('Ada traksaksi lain?(Y/N) ').upper()
-        if o_t == 'Y'or'y':
+        if o_t == 'Y':
             total_biaya += total_ongkir_1
             print()
             pass
-        elif o_t == 'N'or'n':
+        elif o_t == 'N':
             total_biaya += total_ongkir_1
             iterasi = False
 
@@ -302,3 +302,4 @@ print ('==========================================================')
 print ('   Terima kasih sudah menggunakan jasa pengiriman kami    ')
 print ('            Jasa Pengiriman Paket ANUGRAH                 ')
 print ('==========================================================')
+
