@@ -1,5 +1,7 @@
 import sys
 import random
+import csv
+
 a= 'Paket ini diasuransikan'
 b= 'Paket ini diasuransikan'
 c= 'Paket ini diasuransikan'
@@ -113,13 +115,13 @@ while iterasi:
         print("\nError: Wajib diisi ")
         no_penerima=input('No Telp penerima: ')
     
-    try:
-        jarak= float(input('Berapa jarak pengiriman (dlm km): '))
-        if jarak <0:
-            raise ValueError
-    except:
-        print("\nError: Input harus berupa angka dan wajib diisi")
-        jarak= float(input('Berapa jarak pengiriman (dlm km): '))
+    print("")
+    with open ('daftardaerah.csv', 'r') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            if row [1] == kabupaten:
+                print("Jarak(km) : ",row[2])
+                jarak= int(row[2])
 
         
     jenis= input('Paket Surat (Y)/ Non Surat (N): ')
