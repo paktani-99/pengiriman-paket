@@ -39,16 +39,24 @@ while iterasi:
         nama_pengirim=str(input('Nama pengirim: '))
         if nama_pengirim == '':
             raise ValueError
-        
+        elif nama_pengirim == ' ':
+            raise ValueError
+        elif not str.isalpha():
+            raise ValueError
     except Exception:
-        print("\nError: Input harus berupa string ")
+        print("\nError: Input tidak sesuai")
         nama_pengirim=str(input('Nama pengirim: '))
+        
     try:
         nama_penerima=str(input('Nama penerima: '))
         if nama_penerima == '':
-            raise ValueError  
+            raise ValueError
+        elif nama_penerima == ' ':
+            raise ValueError
+        elif not str.isalpha():
+            raise ValueError
     except Exception:
-        print("\nError: Input harus berupa string ")
+        print("\nError: Input tidak sesuai")
         nama_penerima=str(input('Nama penerima: '))
 
     print()
@@ -58,16 +66,15 @@ while iterasi:
         rt_rw=input('RT/RW: ')
         if rt_rw =='':
             raise ValueError
-        
     except Exception:
-        print("\nError: Harus diisi ")
+        print("\nError: Wajib diisi ")
         rt_rw=input('RT/RW: ')
     try:
         desa_jln=input('Desa/Jalan: ')
         if desa_jln=='':
             raise ValueError
     except Exception:
-        print("\nError: Harus diisi ")
+        print("\nError: Wajib diisi ")
         desa_jln=input('Desa/Jalan: ')
 
     try:
@@ -75,35 +82,35 @@ while iterasi:
         if kecamatan=='':
             raise ValueError
     except Exception:
-        print("\nError: Harus diisi ")
+        print("\nError: Wajib diisi ")
         kecamatan=input('Kecamatan: ')
     try:
         kabupaten=input('Kabupaten: ')
         if kabupaten == '':
             raise ValueError
     except Exception:
-        print("\nError: Harus diisi ")
+        print("\nError: Wajib diisi ")
         kabupaten=input('Kabupaten: ')
     try:
         provinsi=input('Provinsi: ')
         if provinsi == '':
             raise ValueError
     except Exception:
-        print("\nError: Harus diisi ")
+        print("\nError: Wajib diisi ")
         provinsi=input('Provinsi: ')
     try:
         kode_pos=input('Kode Pos: ')
         if kode_pos == '':
             raise ValueError
     except Exception:
-        print("\nError: Harus diisi ")
+        print("\nError: Wajib diisi ")
         kode_pos=input('Kode Pos: ')
     try:
         no_penerima=input('No Telp penerima: ')
         if no_penerima=='':
             raise ValueError
     except Exception:
-        print("\nError: Harus diisi ")
+        print("\nError: Wajib diisi ")
         no_penerima=input('No Telp penerima: ')
     
     try:
@@ -111,7 +118,7 @@ while iterasi:
         if jarak <0:
             raise ValueError
     except:
-        print("\nError: Input harus berupa angka ")
+        print("\nError: Input harus berupa angka dan wajib diisi")
         jarak= float(input('Berapa jarak pengiriman (dlm km): '))
 
         
