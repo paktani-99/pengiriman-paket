@@ -9,7 +9,6 @@ d= 'Paket ini tidak diasuransikan'
 iya= 'dan diberi kemasan pelindung'
 tidak= 'dan tidak diberi lapisan pelindung'
 
-
 print('\n','===Selamat Datang di Jasa Pengiriman Paket ANUGRAH===','\n')
 print('...........................................................')
 iterasi = True
@@ -36,30 +35,37 @@ while iterasi:
     print('BIODATA')
     print('===========================================================')
 
+     
+    try:
+        nama_pengirim=''
+        nama_pengirim=input('Nama pengirim: ')
+        ab= nama_pengirim.isalpha()
+        if ab == True:
+            pass
+        else:
+            raise ValueError
+    except Exception:
+        print("\nError: Input tidak sesuai")
+        nama_pengirim=str(input('Nama pengirim: '))
+    try:
+        nama_penerima=''
+        nama_penerima=input('Nama penerima: ')
+        bc= nama_penerima.isalpha()
+        if bc == True:
+            pass
+        else:
+            raise ValueError
+    except Exception:
+        print("\nError: Input tidak sesuai ")
+        nama_penerima=str(input('Nama penerima: '))
 
     try:
-        nama_pengirim=str(input('Nama pengirim: '))
-        if nama_pengirim == '':
-            raise ValueError
-        elif nama_pengirim == ' ':
-            raise ValueError
-        elif not str.isalpha():
+        no_penerima=int(input('No Telp penerima: '))
+        if no_penerima == (0,1000000000):
             raise ValueError
     except Exception:
-        print("\nError: Input tidak sesuai")
-        nama_pengirim=str(input('Nama pengirim: '))
-        
-    try:
-        nama_penerima=str(input('Nama penerima: '))
-        if nama_penerima == '':
-            raise ValueError
-        elif nama_penerima == ' ':
-            raise ValueError
-        elif not str.isalpha():
-            raise ValueError
-    except Exception:
-        print("\nError: Input tidak sesuai")
-        nama_penerima=str(input('Nama penerima: '))
+        print("\nError: Harus diisi dengan angka ")
+        no_penerima=input('No Telp penerima: ')
 
     print()
     print('DETAIL ALAMAT PENERIMA')
@@ -68,53 +74,53 @@ while iterasi:
         rt_rw=input('RT/RW: ')
         if rt_rw =='':
             raise ValueError
+        
     except Exception:
-        print("\nError: Wajib diisi ")
+        print("\nError: Harus diisi ")
         rt_rw=input('RT/RW: ')
     try:
         desa_jln=input('Desa/Jalan: ')
         if desa_jln=='':
             raise ValueError
     except Exception:
-        print("\nError: Wajib diisi ")
+        print("\nError: Harus diisi ")
         desa_jln=input('Desa/Jalan: ')
 
     try:
         kecamatan=input('Kecamatan: ')
-        if kecamatan=='':
+        kc=kecamatan.isalpha()
+        if kc==True:
+            pass
+        else:
             raise ValueError
     except Exception:
-        print("\nError: Wajib diisi ")
+        print("\nError: Input tidak sesuai ")
         kecamatan=input('Kecamatan: ')
     try:
         kabupaten=input('Kabupaten: ')
         if kabupaten == '':
             raise ValueError
     except Exception:
-        print("\nError: Wajib diisi ")
+        print("\nError: Harus diisi ")
+        print("Contoh penulisan yang tepat: Semarang ")
         kabupaten=input('Kabupaten: ')
     try:
         provinsi=input('Provinsi: ')
-        if provinsi == '':
+        pv=provinsi.isalpha()
+        if pv == True:
+            pass
+        else:
             raise ValueError
     except Exception:
-        print("\nError: Wajib diisi ")
+        print("\nError: Input tidak sesuai ")
         provinsi=input('Provinsi: ')
     try:
-        kode_pos=input('Kode Pos: ')
-        if kode_pos == '':
+        kode_pos=int(input('Kode Pos: '))
+        if kode_pos == (0,100000000):
             raise ValueError
     except Exception:
-        print("\nError: Wajib diisi ")
+        print("\nError: Harus diisi dengan angka ")
         kode_pos=input('Kode Pos: ')
-    try:
-        no_penerima=input('No Telp penerima: ')
-        if no_penerima=='':
-            raise ValueError
-    except Exception:
-        print("\nError: Wajib diisi ")
-        no_penerima=input('No Telp penerima: ')
-    
     print("")
     with open ('daftardaerah.csv', 'r') as f:
         reader = csv.reader(f)
@@ -123,8 +129,7 @@ while iterasi:
                 print("Jarak(km) : ",row[2])
                 jarak= int(row[2])
 
-        
-    jenis= input('Paket Surat (Y)/ Non Surat (N): ').upper()
+    jenis= input('Paket Surat (Y)/ Non Surat (N): ')
     if jenis== 'Y':
         print()
         print('===========================================================')
@@ -135,7 +140,14 @@ while iterasi:
         print('A. Agent : JNE')
         print('B. Agent : TIKI')
         print('C. Agent : SiCepat')
-        ja= input('pilih agent paket (A/B/C): ').upper()
+        try:
+            ja= input('pilih agent paket (A/B/C): ').upper()
+            if ja == 'a'or'b'or'c':
+                raise ValueError
+        except Exception:
+            print("\nTulis dengan format sesuai perintah, contoh:A")
+            ja= input('pilih agent paket (A/B/C): ').upper()
+        
         while True:
             print()
             print('Pilihan Paket Waktu Pengiriman:')
@@ -162,7 +174,7 @@ while iterasi:
         print ('Nama penerima:', nama_penerima)
         print ('Alamat penerima:', desa_jln, kecamatan, kabupaten, provinsi, 'RT/RW:', rt_rw, 'Kode Pos: ', kode_pos)
         print('No Telp penerima:', no_penerima)
-        print('Waktu Pengiriman: ',':',hari,':',bulan,':',tahun)
+        print('Waktu Pengiriman: ',hari,':',bulan,':',tahun)
         print('No Resi: ',no_resi)
         print ('Jumlah ongkos kirim: Rp',total_ongkir)
         print('...........................................................')
@@ -176,15 +188,41 @@ while iterasi:
             total_biaya += total_ongkir
             iterasi = False
             
-    if jenis== 'N':
+    if jenis== 'N' or 'n':
         print()
         print('===========================================================')
         print('DETAIL BARANG')
         print('===========================================================')
-        berat_paket= float(input('Berapa berat paket(dlm kg): '))
-        panjang_paket= float(input('Berapa panjang paket(dlm cm): '))
-        lebar_paket= float(input('Berapa lebar paket(dlm cm): '))
-        tinggi_paket= float(input('Berapa tinggi paket(dlm cm): '))
+        try:
+            berat_paket= float(input('Berapa berat paket(dlm kg): '))
+            if berat_paket < 0:
+                raise ValueError
+        except Exception:
+            print("\nError: Input harus berupa angka tanpa satuan ")
+            print("Contoh penulisan: 2 ")
+            berat_paket= float(input('Berapa berat paket(dlm kg): '))
+        try:
+            panjang_paket= float(input('Berapa panjang paket(dlm cm): '))
+            if panjang_paket <0:
+                raise ValueError
+        except Exception:
+            print("\nError: Input harus berupa angka ")
+            panjang_paket= float(input('Berapa panjang paket(dlm cm): '))
+        try:
+            lebar_paket= float(input('Berapa lebar paket(dlm cm): '))
+            if lebar_paket <0:
+                raise ValueError
+        except Exception:
+            print("\nError: Input harus berupa angka ")
+            lebar_paket= float(input('Berapa lebar paket(dlm cm): '))
+        try:
+            tinggi_paket= float(input('Berapa tinggi paket(dlm cm): '))
+            if tinggi_paket <0:
+                raise ValueError
+        except Exception:
+            print("\nError: Input harus berupa angka ")
+            tinggi_paket= float(input('Berapa tinggi paket(dlm cm): '))
+        
         #durasi_kirim=int(input('Berapa lama paket sampai(dlm hari): '))
     
         berat_konversi= float(((panjang_paket)*(lebar_paket)*(tinggi_paket))/(6000))
@@ -225,11 +263,11 @@ while iterasi:
         print('ASURANSI')
         print('===========================================================')   
         kemas= input('Paket mudah pecah/makanan? (Y/N): ').upper()
-        if kemas== 'Y':
+        if kemas== 'Y'or 'n':
             biaya_1 = biaya+500
             jumlah_ongkir = ((biaya_1*1)+biaya_1*((berat-1)*0.7))
             ket1 = dict_ket1[kemas]
-        elif kemas =='N':
+        elif kemas =='N'or'n':
             biaya_1 =biaya
             jumlah_ongkir = round(((biaya_1*1)+biaya_1*((berat-1)*0.7)),1)
             ket1 = dict_ket1[kemas]
@@ -285,7 +323,7 @@ while iterasi:
         print('...........................................................')
         print ("Total transaksi hari ini: " + str(hitung),'\n')
         o_t= input('Ada traksaksi lain?(Y/N) ').upper()
-        if o_t == 'Y':
+        if o_t == 'Y' :
             total_biaya += total_ongkir_1
             print()
             pass
@@ -302,4 +340,3 @@ print ('==========================================================')
 print ('   Terima kasih sudah menggunakan jasa pengiriman kami    ')
 print ('            Jasa Pengiriman Paket ANUGRAH                 ')
 print ('==========================================================')
-
