@@ -2,16 +2,25 @@ import sys
 import random
 import csv
 
-a= 'Paket ini diasuransikan'
-b= 'Paket ini diasuransikan'
-c= 'Paket ini diasuransikan'
-d= 'Paket ini tidak diasuransikan'
+aa= 'Paket ini diasuransikan'
+bb= 'Paket ini diasuransikan'
+cc= 'Paket ini diasuransikan'
+dd= 'Paket ini tidak diasuransikan'
 iya= 'dan diberi kemasan pelindung'
 tidak= 'dan tidak diberi lapisan pelindung'
 
-print('\n','===Selamat Datang di Jasa Pengiriman Paket ANUGRAH===','\n')
+print('\n','===Selamat Datang di Jasa Pengiriman Paket ANUGRAH SOLO===','\n')
 print('...........................................................')
 iterasi = True
+a= True
+b=True
+c=True
+d=True
+e=True
+f=True
+g=True
+h=True
+i=True
 hitung = 0
 paket_jne = [1500, 1000, 500]
 paket_tiki = [500,400,300]
@@ -19,73 +28,102 @@ paket_sc = [2000,1000,500]
 dict_paket = {'A':paket_jne, 'B':paket_tiki, 'C': paket_sc}
 total_biaya = 0
 dict_ket1 = {'Y':iya, 'N':tidak}
-dict_ket2 = {'1':a, '2':b, '3':c, '4':d}
+dict_ket2 = {'1':aa, '2':bb, '3':cc, '4':dd}
 from datetime import datetime
 current = datetime.now()
 
 tahun = current.year
 bulan = current.month
 hari = current.day
-print('Masukkan Data Pengiriman Anda')
+print('Masukkan Data Pengiriman')
 
 while iterasi:
     hitung += 1
     print()
     print('===========================================================')
     print('BIODATA')
-    print('===========================================================')
+    print('===========================================================') 
 
-     
+    while a:
+        try:
+            nama_pengirim=''
+            nama_pengirim=input('Nama pengirim: ')
+            if nama_pengirim=='':
+                raise ValueError
+            else:
+                a=False
+        except Exception:
+            print("\nError: Input tidak sesuai")
+            nama_pengirim=str(input('Nama pengirim: '))
+            if nama_pengirim=='':
+                a=True
+            else:
+                a=False
+    while b:
+        try:
+            nama_penerima=''
+            nama_penerima=input('Nama penerima: ')
+            if nama_penerima=='':
+                raise ValueError
+            else:
+                b=False
+        except Exception:
+            print("\nError: Input tidak sesuai ")
+            nama_penerima=str(input('Nama penerima: '))
+            if nama_penerima=='':
+                b=True
+            else:
+                b=False
     try:
-        nama_pengirim=''
-        nama_pengirim=input('Nama pengirim: ')
-        ab= nama_pengirim.isalpha()
-        if ab == True:
-            pass
-        else:
-            raise ValueError
-    except Exception:
-        print("\nError: Input tidak sesuai")
-        nama_pengirim=str(input('Nama pengirim: '))
-    try:
-        nama_penerima=''
-        nama_penerima=input('Nama penerima: ')
-        bc= nama_penerima.isalpha()
-        if bc == True:
-            pass
-        else:
-            raise ValueError
-    except Exception:
-        print("\nError: Input tidak sesuai ")
-        nama_penerima=str(input('Nama penerima: '))
-
-    try:
-        no_penerima=int(input('No Telp penerima: '))
-        if no_penerima == (0,1000000000):
-            raise ValueError
-    except Exception:
-        print("\nError: Harus diisi dengan angka ")
         no_penerima=input('No Telp penerima: ')
-
+        np= no_penerima.isalpha()
+        if np != True:
+            pass
+        else:
+            raise ValueError
+    except Exception:
+        while c:
+            print("\nError: Harus diisi dengan angka ")
+            no_penerima=input('No Telp penerima: ')
+            np= no_penerima.isalpha()
+            if np == True:
+                c = True
+                pass
+            else :
+                c=False
+                    
     print()
     print('DETAIL ALAMAT PENERIMA')
     print('----------------------')
-    try:
-        rt_rw=input('RT/RW: ')
-        if rt_rw =='':
-            raise ValueError
+    while d:
+        try:
+            rt_rw=input('RT/RW: ')
+            if rt_rw !='':
+                d=False
+            else:
+                raise ValueError  
+        except Exception:
+            print("\nError: Harus diisi ")
+            rt_rw=input('RT/RW: ')
+            if rt_rw=='':
+                d=True
+            else:
+                d=False
+    while e:
+        try:
+            desa_jln=input('Desa/Jalan: ')
+            if desa_jln!='':
+                e=False
+            else:
+                raise ValueError
+        except Exception:
+            print("\nError: Harus diisi ")
+            desa_jln=input('Desa/Jalan: ')
+            if desa_jln=='':
+                e=True
+            else:
+                e=False
         
-    except Exception:
-        print("\nError: Harus diisi ")
-        rt_rw=input('RT/RW: ')
-    try:
-        desa_jln=input('Desa/Jalan: ')
-        if desa_jln=='':
-            raise ValueError
-    except Exception:
-        print("\nError: Harus diisi ")
-        desa_jln=input('Desa/Jalan: ')
-
     try:
         kecamatan=input('Kecamatan: ')
         kc=kecamatan.isalpha()
@@ -94,26 +132,43 @@ while iterasi:
         else:
             raise ValueError
     except Exception:
-        print("\nError: Input tidak sesuai ")
-        kecamatan=input('Kecamatan: ')
+        while f:
+            print("\nError: Input tidak sesuai ")
+            kecamatan=input('Kecamatan: ')
+            kc=kecamatan.isalpha()
+            if kc==True:
+                f=False
+            else:
+                f=True
     try:
-        kabupaten=input('Kabupaten: ')
+        kabupaten=input('Kabupaten: ').lower()
+        with open ('daftardaerah.csv', 'r') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                if row [1] == kabupaten:
+                    print("Jarak(km) : ",row[2])
+                    jarak= int(row[2])
         if kabupaten == '':
             raise ValueError
     except Exception:
         print("\nError: Harus diisi ")
-        print("Contoh penulisan yang tepat dengan huruf kecil: semarang ")
+        print("Contoh penulisan yang tepat: semarang ")
         kabupaten=input('Kabupaten: ')
+
     try:
         provinsi=input('Provinsi: ')
-        pv=provinsi.isalpha()
-        if pv == True:
+        if provinsi!='':
             pass
         else:
             raise ValueError
     except Exception:
-        print("\nError: Input tidak sesuai ")
-        provinsi=input('Provinsi: ')
+        while g:
+            print("\nError: Input tidak sesuai ")
+            provinsi=input('Provinsi: ')
+            if provinsi=='':
+                g=True
+            else :
+                g=False
     try:
         kode_pos=int(input('Kode Pos: '))
         if kode_pos == (0,100000000):
@@ -121,15 +176,8 @@ while iterasi:
     except Exception:
         print("\nError: Harus diisi dengan angka ")
         kode_pos=input('Kode Pos: ')
-    print("")
-    with open ('daftardaerah.csv', 'r') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if row [1] == kabupaten:
-                print("Jarak(km) : ",row[2])
-                jarak= int(row[2])
 
-    jenis= input('Paket Surat (Y)/ Non Surat (N): ')
+    jenis= input('Paket Surat (Y)/ Non Surat (N): ').upper()
     if jenis== 'Y':
         print()
         print('===========================================================')
@@ -142,7 +190,9 @@ while iterasi:
         print('C. Agent : SiCepat')
         try:
             ja= input('pilih agent paket (A/B/C): ').upper()
-            if ja == 'a'or'b'or'c':
+            if ja == 'A'or'B'or'C':
+                pass
+            else:
                 raise ValueError
         except Exception:
             print("\nTulis dengan format sesuai perintah, contoh:A")
@@ -172,7 +222,7 @@ while iterasi:
         print()
         print ('Nama pengirim:', nama_pengirim)
         print ('Nama penerima:', nama_penerima)
-        print ('Alamat penerima:', desa_jln, kecamatan, kabupaten, provinsi, 'RT/RW:', rt_rw, 'Kode Pos: ', kode_pos)
+        print ('Alamat penerima:', desa_jln,',','RT/RW:', rt_rw,',',kecamatan,',',kabupaten,',',provinsi,',','Kode Pos: ', kode_pos)
         print('No Telp penerima:', no_penerima)
         print('Waktu Pengiriman: ',hari,':',bulan,':',tahun)
         print('No Resi: ',no_resi)
@@ -183,12 +233,17 @@ while iterasi:
         if o_t == 'Y':
             total_biaya += total_ongkir
             print()
+            a=True
+            b=True
+            d=True
+            e=True
+            g=True
             pass
         elif o_t == 'N':
             total_biaya += total_ongkir
             iterasi = False
             
-    if jenis== 'N' or 'n':
+    if jenis== 'N':
         print()
         print('===========================================================')
         print('DETAIL BARANG')
@@ -313,7 +368,7 @@ while iterasi:
         print()
         print ('Nama pengirim:', nama_pengirim)
         print ('Nama penerima:', nama_penerima)
-        print ('Alamat penerima:', desa_jln, kecamatan, kabupaten, provinsi, 'RT/RW:', rt_rw, 'Kode Pos: ', kode_pos)
+        print ('Alamat penerima:', desa_jln,',','RT/RW:', rt_rw,',',kecamatan,',',kabupaten,',',provinsi,',','Kode Pos: ', kode_pos)
         print('No Telp penerima:', no_penerima)
         print('Waktu Pengiriman: ',hari,':',bulan,':',tahun)
         print('No Resi: ', no_resi)
@@ -326,6 +381,11 @@ while iterasi:
         if o_t == 'Y' :
             total_biaya += total_ongkir_1
             print()
+            a=True
+            b=True
+            d=True
+            e=True
+            g=True
             pass
         elif o_t == 'N':
             total_biaya += total_ongkir_1
@@ -337,6 +397,7 @@ print()
 print ('Jumlah transaksi hari ini: ' + str(hitung),'\n')
 print ("Total transaksi hari ini: " + str(total_biaya),'\n')
 print ('==========================================================')
-print ('   Terima kasih sudah menggunakan jasa pengiriman kami    ')
-print ('            Jasa Pengiriman Paket ANUGRAH                 ')
+print ('              Anda Telah Keluar dari Sistem               ')
+print ('                    Semangat Bekerja                      ')
 print ('==========================================================')
+
